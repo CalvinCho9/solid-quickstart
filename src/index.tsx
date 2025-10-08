@@ -1,34 +1,21 @@
-import { createSignal } from "solid-js";
+/* @refresh reload */
+import './index.css';
 
-export default function Home() {
-  const [count, setCount] = createSignal(0);
+import { render, Suspense } from 'solid-js/web';
 
-  return (
-    <section class="bg-slate-200 text-slate-700 p-8 rounded-md">
-      <h2 class="text-2xl font-bold mb-2">Welcome to Calvin’s Portfolio</h2>
-      <p class="mt-2">This is the home page.</p>
+import App from './app';
+import { Router } from '@solidjs/router';
+import { routes } from './routes';
 
-      <div class="flex items-center space-x-2 mt-4">
-        <button
-          type="button"
-          class="border rounded-lg px-2 border-slate-900"
-          onClick={() => setCount(count() - 1)}
-        >
-          -
-        </button>
+const root = document.getElementById('root');
 
-        <output class="p-2 text-lg">Count: {count()}</output>
-
-        <button
-          type="button"
-          class="border rounded-lg px-2 border-slate-900"
-          onClick={() => setCount(count() + 1)}
-        >
-          +
-        </button>
-      </div>
-
-      <p class="mt-6 text-slate-600">🔥 Site Updated Successfully</p>
-    </section>
+if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
+  throw new Error(
+    'Root element not found. Did you forget to add it to your index.html? Or maybe the id attribute got misspelled?',
   );
 }
+
+render(
+  () => <Router root={(props) => <App>{props.children}</App>}>{routes}</Router>,
+  root,
+);
