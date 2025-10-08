@@ -5,8 +5,8 @@ export default function Home() {
 
   return (
     <section class="bg-slate-200 text-slate-700 p-8 rounded-md">
-      <h2 class="text-2xl">Home</h2>
-      <p class="mt-4">This is the home page.</p>
+      <h2 class="text-2xl font-bold mb-2">Welcome to Calvin’s Portfolio</h2>
+      <p class="mt-2">This is the home page.</p>
 
       <div class="flex items-center space-x-2 mt-4">
         <button
@@ -27,6 +27,8 @@ export default function Home() {
           +
         </button>
       </div>
+
+      <p class="mt-6 text-slate-600">🔥 Site Updated Successfully</p>
     </section>
   );
 }
